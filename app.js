@@ -8,14 +8,12 @@ const { routes } = require('./components');
 //Initialization
 const app = express();
 
-
 //Logs in console
 app.use(morgan('dev'));
 
 //Server can receive json 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-
 
 //enable cors
 app.use(cors());

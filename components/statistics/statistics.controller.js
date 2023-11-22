@@ -1,3 +1,4 @@
+const { esUndefined } = require('../../utils/validators');
 const Statistic = require('./statistics.model');
 
 exports.getStatistics = async function (req, res) {
@@ -5,10 +6,10 @@ exports.getStatistics = async function (req, res) {
 
     try {
         let query = {};
-        if (filtro1) query.filtro1 = filtro1;
-        if (filtro2) query.filtro2 = filtro2;
-        if (filtro3) query.filtro3 = filtro3;
-        if (filtro4) query.filtro4 = filtro4;
+        if (!esUndefined(filtro1)) query.filtro1 = filtro1;
+        if (!esUndefined(filtro2)) query.filtro2 = filtro2;
+        if (!esUndefined(filtro3)) query.filtro3 = filtro3;
+        if (!esUndefined(filtro4)) query.filtro4 = filtro4;
 
         const statistics = await Statistic.findAll({
             where: query,
